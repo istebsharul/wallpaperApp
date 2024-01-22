@@ -9,7 +9,7 @@ import 'package:wallpaper/views/widgets/searchBar.dart';
 import '../../model/photosModel.dart';
 
 class HomeScreen extends StatefulWidget {
-   const HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -46,88 +46,88 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          centerTitle: true,
-          elevation: 0.0,
-          title: customAppBar(
-            word1: "Wallpaper",
-            word2: " Shar",
-          ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        centerTitle: true,
+        elevation: 0.0,
+        title: customAppBar(
+          word1: "Shar",
+          word2: " Wallpaper",
         ),
-        body: SingleChildScrollView(
+      ),
+      body: Container(
+        // color: Colors.blue,
+        child: SingleChildScrollView(
           child: Column(
             children: [
               searchBar(),
-              // SizedBox(
-              //     height: 100,
-              //     width: MediaQuery.of(context).size.width,
-              //     child: ListView.builder(
-              //         scrollDirection: Axis.horizontal,
-              //         itemCount: 30,
-              //         itemBuilder: (context, index) => catBlock()
-              //         )
-              //       ),
               Container(
-              margin: EdgeInsets.symmetric(vertical: 20),
-              child: SizedBox(
-                height: 50,
-                width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
+                margin: EdgeInsets.symmetric(vertical: 20),
+                child: SizedBox(
+                  height: 50,
+                  width: MediaQuery.of(context).size.width,
+                  child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: CatModList.length,
-                    itemBuilder: ((context, index) => catBlock(
-                          categoryImgSrc: CatModList[index].catImgUrl,
-                          categoryName: CatModList[index].catName,
-                        ))),
-              ),
-            ),
-
-              Container(
-                  margin: EdgeInsets.all(6.0),
-                  height: 700,
-                  child: SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: GridView.builder(
-                      physics: BouncingScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisExtent: 350,
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 13,
-                        mainAxisSpacing: 10,
-                      ),
-                      itemCount: getTrendingWallList.length,
-                      itemBuilder: ((context, index) => GridTile(
-                              child: InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => FullScreen(
-                                          imgUrl: getTrendingWallList[index]
-                                              .imgSrc)));
-                            },
-                            child: Container(
-                                // height:50,
-                                // width:50,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(2),
-                                  // color: Colors.amberAccent,
-                                ),
-                                child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(15),
-                                    child: Image.network(
-                                        getTrendingWallList[index].imgSrc,
-                                        // "https://images.pexels.com/photos/1433052/pexels-photo-1433052.jpeg?auto=compress&cs=tinysrgb&w=600",
-                                        height: 1000,
-                                        width: 50,
-                                        fit: BoxFit.cover))),
-                          ))),
+                    itemBuilder: (context, index) => catBlock(
+                      categoryImgSrc: CatModList[index].catImgUrl,
+                      categoryName: CatModList[index].catName,
                     ),
-                  ))
+                  ),
+                ),
+              ),
+              Container(
+                // color:Colors.red,
+                margin: EdgeInsets.all(6.0),
+                height: 700,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  child: GridView.builder(
+                    physics: BouncingScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisExtent: 350, // Adjust this based on your needs
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 13,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemCount: getTrendingWallList.length,
+                    itemBuilder: (context, index) => GridTile(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => FullScreen(
+                                imgUrl: getTrendingWallList[index].imgSrc,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(2),
+                            color:
+                                Colors.white, // Set the background color to black
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: Image.network(
+                              getTrendingWallList[index].imgSrc,
+                              height: 1000, // Adjust this based on your needs
+                              width: 50,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

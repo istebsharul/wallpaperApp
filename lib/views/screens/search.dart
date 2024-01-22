@@ -15,12 +15,10 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  List<PhotosModel> searchResults=[];
+  List<PhotosModel> searchResults = [];
   GetSearchResults() async {
     searchResults = await ApiOperations.getSearchWallpapers(widget.query);
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
   @override
@@ -47,49 +45,8 @@ class _SearchScreenState extends State<SearchScreen> {
             children: [
               searchBar(),
               SizedBox(
-                  height: 10,
-                  // width: MediaQuery.of(context).size.width,
-                  // child: ListView.builder(
-                  //     scrollDirection: Axis.horizontal,
-                  //     itemCount: searchResults.length,
-                  //     itemBuilder: (context, index) => catBlock())
+                height: 10,
               ),
-              // Container(
-              //   margin: EdgeInsets.all(6.0),
-              //   child: SizedBox(
-              //     height: MediaQuery.of(context).size.height,
-              //     child: GridView.builder(
-              //         physics: BouncingScrollPhysics(),
-              //         gridDelegate:
-              //             const SliverGridDelegateWithFixedCrossAxisCount(
-              //           mainAxisExtent: 350,
-              //           crossAxisCount: 2,
-              //           crossAxisSpacing: 13,
-              //           mainAxisSpacing: 10,
-              //         ),
-              //         itemCount: searchResults.length,
-              //         itemBuilder: ((context, index) => Container(
-              //             // height:50,
-              //             // width:50,
-              //             decoration: BoxDecoration(
-              //               borderRadius: BorderRadius.circular(2),
-              //               // color: Colors.amberAccent,
-              //             ),
-              //             child: ClipRRect(
-              //                 borderRadius: BorderRadius.circular(15),
-              //                 child: Image.network(
-              //                     height: 800,
-              //                     width: 50,
-              //                     fit: BoxFit.cover,
-              //                     searchResults[index].imgSrc,
-              //                     // "https://images.pexels.com/photos/1433052/pexels-photo-1433052.jpeg?auto=compress&cs=tinysrgb&w=600"
-              //                     )
-              //                   )
-              //                 )
-              //               )
-              //             ),
-              //   ),
-              // )
               Container(
                   margin: EdgeInsets.all(6.0),
                   height: 700,
@@ -112,8 +69,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => FullScreen(
-                                          imgUrl: searchResults[index]
-                                              .imgSrc)));
+                                          imgUrl:
+                                              searchResults[index].imgSrc)));
                             },
                             child: Container(
                                 // height:50,
@@ -135,7 +92,6 @@ class _SearchScreenState extends State<SearchScreen> {
                   ))
             ],
           ),
-        )
-      );
+        ));
   }
 }

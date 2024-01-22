@@ -39,8 +39,8 @@ class _catScreenState extends State<catScreen> {
           centerTitle: true,
           elevation: 0.0,
           title: customAppBar(
-            word1: "Wallpaper",
-            word2: "Shar",
+            word1: "Shar",
+            word2: " Wallpaper",
           ),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
@@ -72,7 +72,8 @@ class _catScreenState extends State<catScreen> {
                   
                   Center(
                     child: Container(
-                      margin: EdgeInsets.only(top:40),
+                      margin: EdgeInsets.only(top:50),
+                      alignment: Alignment.center,
                       // color: Colors.blue,
                       child:
                           Text(
